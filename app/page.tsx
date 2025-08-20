@@ -333,7 +333,7 @@ npm run dev`}
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
                 <a href="#" className="hover:text-foreground transition-colors">Terms</a>
-                <a href="#" className="hover:text-foreground transition-colors">License</a>
+                <a href="https://github.com/mboss37/mb-web-boilerplate/blob/main/LICENSE" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">License</a>
               </div>
             </div>
           </div>
