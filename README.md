@@ -2,6 +2,8 @@
 
 A modern, production-ready Next.js 15 boilerplate with React 19, TypeScript, Tailwind CSS v4, Supabase, Drizzle ORM, and shadcn/ui components.
 
+> **📖 This README contains comprehensive documentation, project structure, and advanced features. The landing page provides a quick overview.**
+
 ## ✨ Features
 
 - **🚀 Next.js 15** - Latest App Router with React 19 and Server Components
