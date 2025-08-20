@@ -47,298 +47,214 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Dark Mode Showcase */}
-      <section id="dark-mode" className="container mx-auto px-4 py-8">
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-semibold text-foreground mb-2">
-            🌙 Dark Mode Support
-          </h2>
-          <p className="text-muted-foreground">
-            Click the theme toggle button above to switch between light, dark, and system themes
-          </p>
+      {/* Sticky Navigation Menu */}
+      <section className="sticky top-0 z-50 bg-background border-b">
+        <div className="container mx-auto px-4 py-4">
+          <NavigationMenu>
+            <NavigationMenuList className="flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4">
+              <NavigationMenuItem>
+                <NavigationMenuTrigger 
+                  onClick={() => scrollToSection('overview')}
+                  className={activeSection === 'overview' ? 'bg-accent' : ''}
+                >
+                  Overview
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="grid gap-3 p-4 w-[300px] md:w-[400px]">
+                    <NavigationMenuLink asChild>
+                      <a 
+                        href="#overview" 
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => scrollToSection('overview')}
+                      >
+                        <div className="text-sm font-medium leading-none">Welcome</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          Get started with your Next.js 15 boilerplate
+                        </p>
+                      </a>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <a 
+                        href="#tech-stack" 
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => scrollToSection('tech-stack')}
+                      >
+                        <div className="text-sm font-medium leading-none">Tech Stack</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          Explore all technologies included
+                        </p>
+                      </a>
+                    </NavigationMenuLink>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger 
+                  onClick={() => scrollToSection('getting-started')}
+                  className={activeSection === 'getting-started' ? 'bg-accent' : ''}
+                >
+                  Getting Started
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="grid gap-3 p-4 w-[300px] md:w-[400px]">
+                    <NavigationMenuLink asChild>
+                      <a 
+                        href="#getting-started" 
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => scrollToSection('getting-started')}
+                      >
+                        <div className="text-sm font-medium leading-none">Quick Setup</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          Installation and configuration
+                        </p>
+                      </a>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <a 
+                        href="#project-structure" 
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => scrollToSection('project-structure')}
+                      >
+                        <div className="text-sm font-medium leading-none">Project Structure</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          Understand the directory organization
+                        </p>
+                      </a>
+                    </NavigationMenuLink>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger 
+                  onClick={() => scrollToSection('features')}
+                  className={activeSection === 'features' ? 'bg-accent' : ''}
+                >
+                  Features
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="grid gap-3 p-4 w-[300px] md:w-[400px]">
+                    <NavigationMenuLink asChild>
+                      <a 
+                        href="#features" 
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => scrollToSection('features')}
+                      >
+                        <div className="text-sm font-medium leading-none">Core Features</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          What's included in your boilerplate
+                        </p>
+                      </a>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <a 
+                        href="#dark-mode" 
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => scrollToSection('dark-mode')}
+                      >
+                        <div className="text-sm font-medium leading-none">Dark Mode</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          Theme switching and customization
+                        </p>
+                      </a>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <a 
+                        href="#advanced-features" 
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => scrollToSection('advanced-features')}
+                      >
+                        <div className="text-sm font-medium leading-none">Advanced Features</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          Production-ready capabilities
+                        </p>
+                      </a>
+                    </NavigationMenuLink>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger 
+                  onClick={() => scrollToSection('components')}
+                  className={activeSection === 'components' ? 'bg-accent' : ''}
+                >
+                  Components
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="grid gap-3 p-4 w-[300px] md:w-[400px]">
+                    <NavigationMenuLink asChild>
+                      <a 
+                        href="#components" 
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => scrollToSection('components')}
+                      >
+                        <div className="text-sm font-medium leading-none">UI Components</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          Explore all available shadcn/ui components
+                        </p>
+                      </a>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <a 
+                        href="#component-examples" 
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => scrollToSection('component-examples')}
+                      >
+                        <div className="text-sm font-medium leading-none">Examples</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          See components in action
+                        </p>
+                      </a>
+                    </NavigationMenuLink>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger 
+                  onClick={() => scrollToSection('api')}
+                  className={activeSection === 'api' ? 'bg-accent' : ''}
+                >
+                  API Routes
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="grid gap-3 p-4 w-[300px] md:w-[400px]">
+                    <NavigationMenuLink asChild>
+                      <a 
+                        href="#api" 
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => scrollToSection('api')}
+                      >
+                        <div className="text-sm font-medium leading-none">API Endpoints</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          Available API routes and endpoints
+                        </p>
+                      </a>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <a 
+                        href="#api-usage" 
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => scrollToSection('api-usage')}
+                      >
+                        <div className="text-sm font-medium leading-none">Usage Examples</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          How to use the API endpoints
+                        </p>
+                      </a>
+                    </NavigationMenuLink>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          <Card className="border-2 border-primary/20">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                ☀️ Light Theme
-              </CardTitle>
-              <CardDescription>
-                Clean, bright interface for daytime use
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Perfect for well-lit environments and users who prefer bright interfaces.
-              </p>
-            </CardContent>
-          </Card>
-          
-          <Card className="border-2 border-primary/20">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                🌙 Dark Theme
-              </CardTitle>
-              <CardDescription>
-                Easy on the eyes for low-light conditions
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Ideal for evening use and reducing eye strain in dim environments.
-              </p>
-            </CardContent>
-          </Card>
-          
-          <Card className="border-2 border-primary/20">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                🖥️ System Theme
-              </CardTitle>
-              <CardDescription>
-                Automatically matches your OS preference
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Seamlessly follows your system's light/dark mode setting.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Navigation Menu */}
-      <section className="container mx-auto px-4 pb-8">
-        <NavigationMenu className="w-full">
-          <NavigationMenuList className="grid w-full grid-cols-6">
-            <NavigationMenuItem>
-              <NavigationMenuTrigger 
-                onClick={() => scrollToSection('overview')}
-                className={activeSection === 'overview' ? 'bg-accent' : ''}
-              >
-                🚀 Overview
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <div className="grid gap-3 p-4 w-[400px]">
-                  <NavigationMenuLink asChild>
-                    <a 
-                      href="#overview" 
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      onClick={() => scrollToSection('overview')}
-                    >
-                      <div className="text-sm font-medium leading-none">Welcome</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        Get started with your Next.js 15 boilerplate
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <a 
-                      href="#tech-stack" 
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      onClick={() => scrollToSection('tech-stack')}
-                    >
-                      <div className="text-sm font-medium leading-none">Tech Stack</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        Explore all technologies included
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </div>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavigationMenuTrigger 
-                onClick={() => scrollToSection('structure')}
-                className={activeSection === 'structure' ? 'bg-accent' : ''}
-              >
-                🏗️ Structure
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <div className="grid gap-3 p-4 w-[400px]">
-                  <NavigationMenuLink asChild>
-                    <a 
-                      href="#structure" 
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      onClick={() => scrollToSection('structure')}
-                    >
-                      <div className="text-sm font-medium leading-none">Project Structure</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        Understand the directory organization
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <a 
-                      href="#getting-started" 
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      onClick={() => scrollToSection('getting-started')}
-                    >
-                      <div className="text-sm font-medium leading-none">Getting Started</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        Quick setup instructions
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </div>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavigationMenuTrigger 
-                onClick={() => scrollToSection('components')}
-                className={activeSection === 'components' ? 'bg-accent' : ''}
-              >
-                🧩 Components
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <div className="grid gap-3 p-4 w-[400px]">
-                  <NavigationMenuLink asChild>
-                    <a 
-                      href="#components" 
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      onClick={() => scrollToSection('components')}
-                    >
-                      <div className="text-sm font-medium leading-none">UI Components</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        Explore all available shadcn/ui components
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <a 
-                      href="#component-examples" 
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      onClick={() => scrollToSection('component-examples')}
-                    >
-                      <div className="text-sm font-medium leading-none">Examples</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        See components in action
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </div>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavigationMenuTrigger 
-                onClick={() => scrollToSection('api')}
-                className={activeSection === 'api' ? 'bg-accent' : ''}
-              >
-                📡 API Routes
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <div className="grid gap-3 p-4 w-[400px]">
-                  <NavigationMenuLink asChild>
-                    <a 
-                      href="#api" 
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      onClick={() => scrollToSection('api')}
-                    >
-                      <div className="text-sm font-medium leading-none">API Endpoints</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        Available API routes and endpoints
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <a 
-                      href="#api-usage" 
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      onClick={() => scrollToSection('api-usage')}
-                    >
-                      <div className="text-sm font-medium leading-none">Usage Examples</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        How to use the API endpoints
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </div>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavigationMenuTrigger 
-                onClick={() => scrollToSection('features')}
-                className={activeSection === 'features' ? 'bg-accent' : ''}
-              >
-                ✨ Features
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <div className="grid gap-3 p-4 w-[400px]">
-                  <NavigationMenuLink asChild>
-                    <a 
-                      href="#features" 
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      onClick={() => scrollToSection('features')}
-                    >
-                      <div className="text-sm font-medium leading-none">Core Features</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        What's included in your boilerplate
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <a 
-                      href="#advanced-features" 
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      onClick={() => scrollToSection('advanced-features')}
-                    >
-                      <div className="text-sm font-medium leading-none">Advanced Features</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        Production-ready capabilities
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </div>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <NavigationMenuTrigger 
-                onClick={() => scrollToSection('dark-mode')}
-                className={activeSection === 'dark-mode' ? 'bg-accent' : ''}
-              >
-                🌙 Dark Mode
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <div className="grid gap-3 p-4 w-[400px]">
-                  <NavigationMenuLink asChild>
-                    <a 
-                      href="#dark-mode" 
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      onClick={() => scrollToSection('dark-mode')}
-                    >
-                      <div className="text-sm font-medium leading-none">Theme Switching</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        Light, dark, and system theme support
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <a 
-                      href="#theme-customization" 
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      onClick={() => scrollToSection('theme-customization')}
-                    >
-                      <div className="text-sm font-medium leading-none">Customization</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        Customize colors and themes
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </div>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
       </section>
 
       {/* Content Sections */}
-      <div className="space-y-16">
+      <div className="space-y-16 py-8">
         {/* Overview Section */}
         <section id="overview" className="container mx-auto px-4">
           <div className="text-center mb-8">
@@ -416,48 +332,45 @@ export default function Home() {
               </CardContent>
             </Card>
           </div>
-
-          {/* Quick Start */}
-          <Card className="max-w-2xl mx-auto">
-            <CardHeader>
-              <CardTitle>🚀 Quick Start</CardTitle>
-              <CardDescription>Get up and running in minutes</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="bg-muted p-4 rounded-lg font-mono text-sm">
-                <p># Clone and install</p>
-                <p>git clone https://github.com/yourusername/mb-web-boilerplate.git</p>
-                <p>cd mb-web-boilerplate</p>
-                <p>npm install</p>
-                <br/>
-                <p># Start development</p>
-                <p>npm run dev</p>
-              </div>
-              <Button className="w-full">Start Building Now</Button>
-            </CardContent>
-          </Card>
         </section>
 
         <Separator />
 
-        {/* Structure Section */}
-        <section id="structure" className="container mx-auto px-4">
+        {/* Getting Started Section */}
+        <section id="getting-started" className="container mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">Project Structure</h2>
+            <h2 className="text-3xl font-bold mb-4">Getting Started</h2>
             <p className="text-lg text-muted-foreground">
-              Understanding the organization of your boilerplate project
+              Quick setup and project structure overview
             </p>
           </div>
 
-          {/* Directory Tree */}
-          <Card>
-            <CardHeader>
-              <CardTitle>📁 Project Directory Structure</CardTitle>
-              <CardDescription>Complete overview of all directories and files</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-muted rounded-lg p-6 font-mono text-sm overflow-x-auto">
-                <pre className="whitespace-pre-wrap text-foreground">
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>🚀 Quick Start Guide</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="bg-muted p-4 rounded-lg font-mono text-sm">
+                  <p># Clone and install</p>
+                  <p>git clone https://github.com/yourusername/mb-web-boilerplate.git</p>
+                  <p>cd mb-web-boilerplate</p>
+                  <p>npm install</p>
+                  <br/>
+                  <p># Start development</p>
+                  <p>npm run dev</p>
+                </div>
+                <Button className="w-full">Start Building Now</Button>
+              </CardContent>
+            </Card>
+
+            <Card id="project-structure">
+              <CardHeader>
+                <CardTitle>📁 Project Structure</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="bg-muted rounded-lg p-6 font-mono text-sm overflow-x-auto">
+                  <pre className="whitespace-pre-wrap text-foreground">
 {`mb-web-boilerplate/
 ├── 📁 app/                          # Next.js 15 App Router
 │   ├── 📁 api/                      # API Routes (Route Handlers)
@@ -468,6 +381,8 @@ export default function Home() {
 │   ├── 📄 layout.tsx                # Root layout component
 │   └── 📄 page.tsx                  # Home page
 ├── 📁 components/                    # Reusable UI components
+│   ├── 📄 mode-toggle.tsx           # Dark mode theme switcher
+│   ├── 📄 theme-provider.tsx        # Theme context provider
 │   └── 📁 ui/                       # shadcn/ui components
 │       ├── 📄 avatar.tsx
 │       ├── 📄 badge.tsx
@@ -479,6 +394,8 @@ export default function Home() {
 │       ├── 📄 input.tsx
 │       ├── 📄 label.tsx
 │       ├── 📄 navigation-menu.tsx
+│       ├── 📄 separator.tsx         # Visual separator component
+│       ├── 📄 tabs.tsx              # Tabbed interface component
 │       └── 📄 table.tsx
 ├── 📁 config/                        # Configuration files
 │   ├── 📄 app.ts                     # App configuration
@@ -514,37 +431,8 @@ export default function Home() {
 ├── 📄 package.json                   # Dependencies & scripts
 ├── 📄 postcss.config.mjs             # PostCSS configuration
 └── 📄 README.md                      # Project documentation`}
-                </pre>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Directory Explanations */}
-          <div id="getting-started" className="grid md:grid-cols-2 gap-6 mt-8">
-            <Card>
-              <CardHeader>
-                <CardTitle>📁 Key Directories Explained</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div><strong>app/</strong> - Next.js 15 App Router with API routes</div>
-                <div><strong>components/</strong> - Reusable UI components (shadcn/ui)</div>
-                <div><strong>lib/</strong> - Core utilities, database, and Supabase setup</div>
-                <div><strong>hooks/</strong> - Custom React hooks for common operations</div>
-                <div><strong>types/</strong> - TypeScript type definitions</div>
-                <div><strong>config/</strong> - Application configuration files</div>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader>
-                <CardTitle>🚀 Getting Started</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div>1. Clone the repository</div>
-                <div>2. Install dependencies: <code className="bg-muted px-2 py-1 rounded">npm install</code></div>
-                <div>3. Copy <code className="bg-muted px-2 py-1 rounded">.env.example</code> to <code className="bg-muted px-2 py-1 rounded">.env.local</code></div>
-                <div>4. Add your Supabase credentials</div>
-                <div>5. Run <code className="bg-muted px-2 py-1 rounded">npm run dev</code></div>
+                  </pre>
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -552,7 +440,200 @@ export default function Home() {
 
         <Separator />
 
-        {/* Components Section */}
+        {/* Features Section */}
+        <section id="features" className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold mb-4">Features & Capabilities</h2>
+            <p className="text-lg text-muted-foreground">
+              Everything included in your boilerplate
+            </p>
+          </div>
+
+          {/* Core Features Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle>🚀 Next.js 15</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Latest App Router with React 19, Server Components, and streaming.</p>
+              </CardContent>
+            </Card>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle>🎨 Tailwind CSS v4</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Modern CSS framework with the latest features and optimizations.</p>
+              </CardContent>
+            </Card>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle>🔐 Supabase Integration</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Built-in authentication, database, and real-time subscriptions.</p>
+              </CardContent>
+            </Card>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle>🗄️ Drizzle ORM</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Type-safe SQL operations with excellent TypeScript support.</p>
+              </CardContent>
+            </Card>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle>🧩 shadcn/ui</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Beautiful, accessible components built with Radix UI and Tailwind CSS.</p>
+              </CardContent>
+            </Card>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle>⚡ TypeScript</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Full TypeScript support with strict type checking and IntelliSense.</p>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Dark Mode Showcase */}
+          <div id="dark-mode" className="mb-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>🌙 Dark Mode Support</CardTitle>
+                <CardDescription>Built-in theme switching with next-themes</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <Card className="border-2 border-primary/20">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        ☀️ Light Theme
+                      </CardTitle>
+                      <CardDescription>
+                        Clean, bright interface for daytime use
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        Perfect for well-lit environments and users who prefer bright interfaces.
+                      </p>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="border-2 border-primary/20">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        🌙 Dark Theme
+                      </CardTitle>
+                      <CardDescription>
+                        Easy on the eyes for low-light conditions
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        Ideal for evening use and reducing eye strain in dim environments.
+                      </p>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card className="border-2 border-primary/20">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        🖥️ System Theme
+                      </CardTitle>
+                      <CardDescription>
+                        Automatically matches your OS preference
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        Seamlessly follows your system's light/dark mode setting.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Advanced Features */}
+          <div id="advanced-features">
+            <Card>
+              <CardHeader>
+                <CardTitle>🔧 Advanced Features</CardTitle>
+                <CardDescription>Production-ready capabilities</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-3">
+                    <h4 className="font-semibold">Authentication & Security</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Supabase Auth with SSR support</li>
+                      <li>• Row Level Security (RLS)</li>
+                      <li>• Protected routes</li>
+                      <li>• Session management</li>
+                    </ul>
+                  </div>
+                  <div className="space-y-3">
+                    <h4 className="font-semibold">Database & ORM</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• PostgreSQL with Supabase</li>
+                      <li>• Type-safe Drizzle ORM</li>
+                      <li>• Migration system</li>
+                      <li>• Database studio</li>
+                    </ul>
+                  </div>
+                  <div className="space-y-3">
+                    <h4 className="font-semibold">Development Experience</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• ESLint v9 configuration</li>
+                      <li>• TypeScript strict mode</li>
+                      <li>• Hot reloading</li>
+                      <li>• Error boundaries</li>
+                    </ul>
+                  </div>
+                  <div className="space-y-3">
+                    <h4 className="font-semibold">UI & Styling</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Responsive design</li>
+                      <li>• Dark mode support</li>
+                      <li>• Custom CSS variables</li>
+                      <li>• Component variants</li>
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Ready to Start */}
+          <Card className="max-w-2xl mx-auto mt-8">
+            <CardHeader>
+              <CardTitle>🎯 Ready to Get Started?</CardTitle>
+              <CardDescription>Your boilerplate is ready to use</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-center text-muted-foreground">
+                This boilerplate includes everything you need to build production-ready applications. 
+                Just add your Supabase credentials and start building!
+              </p>
+              <div className="flex gap-4 justify-center">
+                <Button size="lg">Start Building</Button>
+                <Button variant="outline" size="lg">View on GitHub</Button>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        <Separator />
+
+        {/* Components Showcase Section */}
         <section id="components" className="container mx-auto px-4">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold mb-4">Component Showcase</h2>
@@ -732,7 +813,7 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            {/* Navigation Menu */}
+            {/* Navigation Menu (Demo) */}
             <Card>
               <CardHeader>
                 <CardTitle>Navigation Menu</CardTitle>
@@ -744,7 +825,7 @@ export default function Home() {
                     <NavigationMenuItem>
                       <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
                       <NavigationMenuContent>
-                        <div className="grid gap-3 p-4 w-[400px]">
+                        <div className="grid gap-3 p-4 w-[300px] md:w-[400px]">
                           <NavigationMenuLink asChild>
                             <a href="#" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                               <div className="text-sm font-medium leading-none">Introduction</div>
@@ -907,138 +988,6 @@ export default function Home() {
                 Each API route uses Next.js 15 Route Handlers with proper HTTP method handling, 
                 error handling, and TypeScript types.
               </p>
-            </CardContent>
-          </Card>
-        </section>
-
-        <Separator />
-
-        {/* Features Section */}
-        <section id="features" className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">Features & Capabilities</h2>
-            <p className="text-lg text-muted-foreground">
-              Everything included in your boilerplate
-            </p>
-          </div>
-
-          {/* Core Features */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle>🚀 Next.js 15</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Latest App Router with React 19, Server Components, and streaming.</p>
-              </CardContent>
-            </Card>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle>🎨 Tailwind CSS v4</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Modern CSS framework with the latest features and optimizations.</p>
-              </CardContent>
-            </Card>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle>🔐 Supabase Integration</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Built-in authentication, database, and real-time subscriptions.</p>
-              </CardContent>
-            </Card>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle>🗄️ Drizzle ORM</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Type-safe SQL operations with excellent TypeScript support.</p>
-              </CardContent>
-            </Card>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle>🧩 shadcn/ui</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Beautiful, accessible components built with Radix UI and Tailwind CSS.</p>
-              </CardContent>
-            </Card>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle>⚡ TypeScript</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Full TypeScript support with strict type checking and IntelliSense.</p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Advanced Features */}
-          <div id="advanced-features">
-            <Card>
-              <CardHeader>
-                <CardTitle>🔧 Advanced Features</CardTitle>
-                <CardDescription>Production-ready capabilities</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-3">
-                    <h4 className="font-semibold">Authentication & Security</h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>• Supabase Auth with SSR support</li>
-                      <li>• Row Level Security (RLS)</li>
-                      <li>• Protected routes</li>
-                      <li>• Session management</li>
-                    </ul>
-                  </div>
-                  <div className="space-y-3">
-                    <h4 className="font-semibold">Database & ORM</h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>• PostgreSQL with Supabase</li>
-                      <li>• Type-safe Drizzle ORM</li>
-                      <li>• Migration system</li>
-                      <li>• Database studio</li>
-                    </ul>
-                  </div>
-                  <div className="space-y-3">
-                    <h4 className="font-semibold">Development Experience</h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>• ESLint v9 configuration</li>
-                      <li>• TypeScript strict mode</li>
-                      <li>• Hot reloading</li>
-                      <li>• Error boundaries</li>
-                    </ul>
-                  </div>
-                  <div className="space-y-3">
-                    <h4 className="font-semibold">UI & Styling</h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>• Responsive design</li>
-                      <li>• Dark mode support</li>
-                      <li>• Custom CSS variables</li>
-                      <li>• Component variants</li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Getting Started */}
-          <Card className="max-w-2xl mx-auto mt-8">
-            <CardHeader>
-              <CardTitle>🎯 Ready to Get Started?</CardTitle>
-              <CardDescription>Your boilerplate is ready to use</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-center text-muted-foreground">
-                This boilerplate includes everything you need to build production-ready applications. 
-                Just add your Supabase credentials and start building!
-              </p>
-              <div className="flex gap-4 justify-center">
-                <Button size="lg">Start Building</Button>
-                <Button variant="outline" size="lg">View on GitHub</Button>
-              </div>
             </CardContent>
           </Card>
         </section>
