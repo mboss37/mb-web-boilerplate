@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mb-web-boilerplate.vercel.app'),
   title: {
     default: "MB Web Boilerplate - Modern Next.js 15 Starter",
     template: "%s | MB Web Boilerplate",
