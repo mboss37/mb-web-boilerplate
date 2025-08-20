@@ -100,3 +100,12 @@ When adding new features:
 4. Test dark mode compatibility
 5. Add proper TypeScript types
 6. Use appropriate Magic UI components for animations
+
+## 📚 Research & Documentation
+- **ALWAYS** use Context7 for documentation references when:
+  - Library/framework usage is unclear
+  - API documentation is needed
+  - Best practices are uncertain
+  - Component behavior needs clarification
+- **ALWAYS** verify information with official documentation before implementing
+- **ALWAYS** cite sources when referencing external documentation
