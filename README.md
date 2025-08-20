@@ -13,6 +13,7 @@ A modern Next.js 15 boilerplate with React 19, TypeScript, Tailwind CSS v4, ESLi
 - **Drizzle ORM** - Type-safe database operations
 - **Authentication** - Built-in user management
 - **Row Level Security** - Database-level security policies
+- **shadcn/ui** - Beautiful, accessible UI components
 
 ## 🛠️ Tech Stack
 
@@ -22,6 +23,7 @@ A modern Next.js 15 boilerplate with React 19, TypeScript, Tailwind CSS v4, ESLi
 - **Authentication**: Supabase Auth with SSR support
 - **Styling**: Tailwind CSS v4 with modern syntax
 - **Linting**: ESLint v9 with Next.js rules
+- **UI Components**: shadcn/ui with Radix UI primitives
 
 ## 📦 Installation
 
@@ -99,8 +101,11 @@ npm run db:studio
 │       ├── client.ts     # Client-side client
 │       ├── server.ts     # Server-side client
 │       └── middleware.ts # Session management
+├── components/
+│   └── ui/               # shadcn/ui components
 ├── drizzle/              # Generated migrations
 ├── drizzle.config.ts     # Drizzle configuration
+├── components.json       # shadcn/ui configuration
 └── middleware.ts         # Next.js middleware
 ```
 
@@ -151,8 +156,9 @@ export default function LoginForm() {
 }
 ```
 
-## 🎨 Styling
+## 🎨 Styling & UI Components
 
+### Tailwind CSS v4
 Built with Tailwind CSS v4 using the new syntax:
 
 ```css
@@ -162,6 +168,29 @@ Built with Tailwind CSS v4 using the new syntax:
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
+```
+
+### shadcn/ui Components
+The boilerplate includes a comprehensive set of pre-built UI components:
+
+- **Form Elements**: Button, Input, Label, Form
+- **Layout**: Card, Badge, Avatar
+- **Navigation**: Navigation Menu, Dropdown Menu
+- **Data Display**: Table, Dialog
+- **Utilities**: All components are fully accessible and customizable
+
+#### Adding More Components
+To add additional shadcn/ui components:
+
+```bash
+npx shadcn@latest add [component-name]
+```
+
+Example:
+```bash
+npx shadcn@latest add select
+npx shadcn@latest add tabs
+npx shadcn@latest add toast
 ```
 
 ## 📝 Database Schema
