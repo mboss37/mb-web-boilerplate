@@ -14,6 +14,13 @@ import { Separator } from '@/components/ui/separator'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import { Menu } from 'lucide-react'
 
 const NAV_SECTIONS = [
   { id: 'overview', label: 'Overview' },
@@ -29,6 +36,7 @@ type SectionId = typeof NAV_SECTIONS[number]['id']
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<SectionId>('overview')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const sectionIds = useMemo(() => NAV_SECTIONS.map(s => s.id), [])
 
@@ -65,14 +73,15 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto flex h-14 items-center justify-between px-4">
+        <div className="container mx-auto flex h-14 items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
             <div className="h-2 w-2 rounded-full bg-primary" />
             <span className="text-sm font-semibold tracking-wide">MB Web Boilerplate</span>
           </div>
 
-          <NavigationMenu>
-            <NavigationMenuList className="hidden gap-1 md:flex">
+          {/* Desktop Navigation */}
+          <NavigationMenu className="hidden md:block">
+            <NavigationMenuList className="gap-1">
               {NAV_SECTIONS.map(({ id, label }) => (
                 <NavigationMenuItem key={id}>
                   <NavigationMenuLink
@@ -96,8 +105,34 @@ export default function Home() {
           </NavigationMenu>
 
           <div className="flex items-center gap-2">
+            {/* Mobile Menu */}
+            <DropdownMenu open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+              <DropdownMenuTrigger asChild className="md:hidden">
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Toggle menu</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                {NAV_SECTIONS.map(({ id, label }) => (
+                  <DropdownMenuItem
+                    key={id}
+                    onClick={() => {
+                      scrollToSection(id)
+                      setMobileMenuOpen(false)
+                    }}
+                    className={cn(
+                      activeSection === id && 'bg-accent'
+                    )}
+                  >
+                    {label}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+            
             <ModeToggle />
-            <a href="https://github.com/mboss37/mb-web-boilerplate" target="_blank" rel="noreferrer">
+            <a href="https://github.com/mboss37/mb-web-boilerplate" target="_blank" rel="noreferrer" className="hidden sm:block">
               <Button variant="outline" size="sm">GitHub</Button>
             </a>
           </div>
@@ -106,17 +141,17 @@ export default function Home() {
 
       <main className="space-y-16">
         {/* Hero */}
-        <section className="container mx-auto px-4 py-16 text-center">
-          <h1 className="mx-auto mb-4 max-w-3xl text-balance text-4xl font-semibold tracking-tight md:text-5xl">
+        <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 text-center">
+          <h1 className="mx-auto mb-4 max-w-3xl text-balance text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight">
             Build faster with a modern Next.js 15 boilerplate
           </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-pretty text-muted-foreground">
+          <p className="mx-auto mb-8 max-w-2xl text-pretty text-sm sm:text-base text-muted-foreground">
             React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Supabase, and Drizzle ORM — curated and wired up with sensible defaults.
           </p>
-          <div className="flex items-center justify-center gap-3">
-            <Button size="lg" onClick={() => scrollToSection('getting-started')}>Get Started</Button>
-            <a href="https://github.com/mboss37/mb-web-boilerplate" target="_blank" rel="noreferrer">
-              <Button size="lg" variant="outline">View on GitHub</Button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Button size="lg" onClick={() => scrollToSection('getting-started')} className="w-full sm:w-auto">Get Started</Button>
+            <a href="https://github.com/mboss37/mb-web-boilerplate" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="w-full">View on GitHub</Button>
             </a>
           </div>
         </section>
@@ -124,13 +159,13 @@ export default function Home() {
         <Separator />
 
         {/* Overview */}
-        <section id="overview" className="container mx-auto px-4">
+        <section id="overview" className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="mb-8 text-center">
-            <h2 className="text-2xl font-semibold">Overview</h2>
-            <p className="text-muted-foreground">A concise snapshot of the stack</p>
+            <h2 className="text-xl sm:text-2xl font-semibold">Overview</h2>
+            <p className="text-sm sm:text-base text-muted-foreground">A concise snapshot of the stack</p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-3 sm:gap-4 grid-cols-2 lg:grid-cols-4">
             {[
               { title: 'Next.js 15', badge: 'App Router' },
               { title: 'React 19', badge: 'Concurrent' },
@@ -147,10 +182,10 @@ export default function Home() {
             ].map((item) => (
               <Card key={item.title} className="hover:shadow-sm">
                 <CardHeader>
-                  <CardTitle className="text-base">{item.title}</CardTitle>
+                  <CardTitle className="text-sm sm:text-base">{item.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <Badge variant="secondary">{item.badge}</Badge>
+                  <Badge variant="secondary" className="text-xs">{item.badge}</Badge>
                 </CardContent>
               </Card>
             ))}
@@ -160,20 +195,20 @@ export default function Home() {
         <Separator />
 
         {/* Getting Started */}
-        <section id="getting-started" className="container mx-auto px-4">
+        <section id="getting-started" className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="mb-8 text-center">
-            <h2 className="text-2xl font-semibold">Getting Started</h2>
-            <p className="text-muted-foreground">Install, run, and customize in minutes</p>
+            <h2 className="text-xl sm:text-2xl font-semibold">Getting Started</h2>
+            <p className="text-sm sm:text-base text-muted-foreground">Install, run, and customize in minutes</p>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-2">
             <Card>
               <CardHeader>
                 <CardTitle>Quick Start</CardTitle>
-                <CardDescription>Clone and run locally</CardDescription>
+                <CardDescription className="text-xs sm:text-sm">Clone and run locally</CardDescription>
               </CardHeader>
               <CardContent>
-                <pre className="rounded-md bg-muted p-4 text-sm leading-7">
+                <pre className="rounded-md bg-muted p-3 sm:p-4 text-xs sm:text-sm leading-6 sm:leading-7 overflow-x-auto">
 {`git clone https://github.com/mboss37/mb-web-boilerplate
 cd mb-web-boilerplate
 npm install
@@ -185,9 +220,9 @@ npm run dev`}
             <Card>
               <CardHeader>
                 <CardTitle>Environment</CardTitle>
-                <CardDescription>Optional Supabase + DB</CardDescription>
+                <CardDescription className="text-xs sm:text-sm">Optional Supabase + DB</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-2 text-sm text-muted-foreground">
+              <CardContent className="space-y-2 text-xs sm:text-sm text-muted-foreground">
                 <p>Copy .env.example → .env.local and add keys to enable Supabase and DB features.</p>
                 <p>The app runs without credentials; auth/database features are auto-disabled.</p>
               </CardContent>
@@ -198,19 +233,19 @@ npm run dev`}
         <Separator />
 
         {/* Structure */}
-        <section id="structure" className="container mx-auto px-4">
+        <section id="structure" className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="mb-8 text-center">
-            <h2 className="text-2xl font-semibold">Project Structure</h2>
-            <p className="text-muted-foreground">Clean directories for real apps</p>
+            <h2 className="text-xl sm:text-2xl font-semibold">Project Structure</h2>
+            <p className="text-sm sm:text-base text-muted-foreground">Clean directories for real apps</p>
           </div>
 
           <Card>
             <CardHeader>
               <CardTitle>Directory Layout</CardTitle>
-              <CardDescription>Key folders at a glance</CardDescription>
+              <CardDescription className="text-xs sm:text-sm">Key folders at a glance</CardDescription>
             </CardHeader>
             <CardContent>
-              <pre className="max-h-[420px] overflow-auto rounded-md bg-muted p-4 text-sm">
+              <pre className="max-h-[300px] sm:max-h-[420px] overflow-auto rounded-md bg-muted p-3 sm:p-4 text-xs sm:text-sm">
 {`mb-web-boilerplate/
 ├── app/                # App Router + pages & API routes
 ├── components/         # Reusable UI (shadcn/ui)
@@ -229,10 +264,10 @@ npm run dev`}
         <Separator />
 
         {/* Features */}
-        <section id="features" className="container mx-auto px-4">
+        <section id="features" className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="mb-8 text-center">
-            <h2 className="text-2xl font-semibold">Features</h2>
-            <p className="text-muted-foreground">Everything you need to ship</p>
+            <h2 className="text-xl sm:text-2xl font-semibold">Features</h2>
+            <p className="text-sm sm:text-base text-muted-foreground">Everything you need to ship</p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -264,9 +299,9 @@ npm run dev`}
             ].map((f) => (
               <Card key={f.title} className="hover:shadow-sm">
                 <CardHeader>
-                  <CardTitle className="text-base">{f.title}</CardTitle>
+                  <CardTitle className="text-sm sm:text-base">{f.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="text-sm text-muted-foreground">{f.desc}</CardContent>
+                <CardContent className="text-xs sm:text-sm text-muted-foreground">{f.desc}</CardContent>
               </Card>
             ))}
           </div>
@@ -275,10 +310,10 @@ npm run dev`}
         <Separator />
 
         {/* New Features */}
-        <section id="enhancements" className="container mx-auto px-4">
+        <section id="enhancements" className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="mb-8 text-center">
-            <h2 className="text-2xl font-semibold">Enhanced Features</h2>
-            <p className="text-muted-foreground">Production-ready improvements</p>
+            <h2 className="text-xl sm:text-2xl font-semibold">Enhanced Features</h2>
+            <p className="text-sm sm:text-base text-muted-foreground">Production-ready improvements</p>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-2">
@@ -288,10 +323,10 @@ npm run dev`}
                   <Badge variant="secondary">New</Badge>
                   Environment Validation
                 </CardTitle>
-                <CardDescription>Type-safe environment variables with Zod</CardDescription>
+                <CardDescription className="text-xs sm:text-sm">Type-safe environment variables with Zod</CardDescription>
               </CardHeader>
               <CardContent>
-                <pre className="rounded-md bg-muted p-4 text-sm">
+                <pre className="rounded-md bg-muted p-3 sm:p-4 text-xs sm:text-sm overflow-x-auto">
 {`import { env } from '@/lib/env';
 
 // Type-safe & validated
@@ -306,9 +341,9 @@ const apiUrl = env.NEXT_PUBLIC_API_URL;`}
                   <Badge variant="secondary">New</Badge>
                   SEO Optimization
                 </CardTitle>
-                <CardDescription>Complete metadata & social cards</CardDescription>
+                <CardDescription className="text-xs sm:text-sm">Complete metadata & social cards</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-2 text-sm text-muted-foreground">
+              <CardContent className="space-y-2 text-xs sm:text-sm text-muted-foreground">
                 <p>✓ Dynamic page titles with templates</p>
                 <p>✓ Open Graph & Twitter cards</p>
                 <p>✓ Structured data support</p>
@@ -322,9 +357,9 @@ const apiUrl = env.NEXT_PUBLIC_API_URL;`}
                   <Badge variant="secondary">New</Badge>
                   Error Handling
                 </CardTitle>
-                <CardDescription>Graceful error boundaries & 404 pages</CardDescription>
+                <CardDescription className="text-xs sm:text-sm">Graceful error boundaries & 404 pages</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-2 text-sm text-muted-foreground">
+              <CardContent className="space-y-2 text-xs sm:text-sm text-muted-foreground">
                 <p>✓ Global error boundary with recovery</p>
                 <p>✓ Custom 404 page with navigation</p>
                 <p>✓ Development error details</p>
@@ -338,9 +373,9 @@ const apiUrl = env.NEXT_PUBLIC_API_URL;`}
                   <Badge variant="secondary">New</Badge>
                   Security & Performance
                 </CardTitle>
-                <CardDescription>Production-ready optimizations</CardDescription>
+                <CardDescription className="text-xs sm:text-sm">Production-ready optimizations</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-2 text-sm text-muted-foreground">
+              <CardContent className="space-y-2 text-xs sm:text-sm text-muted-foreground">
                 <p>✓ Security headers (HSTS, CSP, etc.)</p>
                 <p>✓ Image optimization (AVIF, WebP)</p>
                 <p>✓ Package import optimization</p>
@@ -353,10 +388,10 @@ const apiUrl = env.NEXT_PUBLIC_API_URL;`}
         <Separator />
 
         {/* Components */}
-        <section id="components" className="container mx-auto px-4">
+        <section id="components" className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="mb-8 text-center">
-            <h2 className="text-2xl font-semibold">Component Showcase</h2>
-            <p className="text-muted-foreground">A curated set of UI primitives</p>
+            <h2 className="text-xl sm:text-2xl font-semibold">Component Showcase</h2>
+            <p className="text-sm sm:text-base text-muted-foreground">A curated set of UI primitives</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -370,8 +405,8 @@ const apiUrl = env.NEXT_PUBLIC_API_URL;`}
             ].map((c) => (
               <Card key={c.title}>
                 <CardHeader>
-                  <CardTitle className="text-base">{c.title}</CardTitle>
-                  <CardDescription>{c.hint}</CardDescription>
+                  <CardTitle className="text-sm sm:text-base">{c.title}</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">{c.hint}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Button size="sm" variant="outline">Explore</Button>
@@ -384,18 +419,18 @@ const apiUrl = env.NEXT_PUBLIC_API_URL;`}
         <Separator />
 
         {/* API */}
-        <section id="api" className="container mx-auto px-4">
+        <section id="api" className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="mb-8 text-center">
-            <h2 className="text-2xl font-semibold">API Routes</h2>
-            <p className="text-muted-foreground">Next.js 15 Route Handlers with proper error handling</p>
+            <h2 className="text-xl sm:text-2xl font-semibold">API Routes</h2>
+            <p className="text-sm sm:text-base text-muted-foreground">Next.js 15 Route Handlers with proper error handling</p>
           </div>
 
           <Card>
             <CardHeader>
               <CardTitle>Endpoints</CardTitle>
-              <CardDescription>Built-in examples to get you started</CardDescription>
+              <CardDescription className="text-xs sm:text-sm">Built-in examples to get you started</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="overflow-x-auto">
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -406,19 +441,19 @@ const apiUrl = env.NEXT_PUBLIC_API_URL;`}
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-medium">/api/hello</TableCell>
-                    <TableCell><Badge variant="outline">GET</Badge> <Badge variant="outline">POST</Badge></TableCell>
-                    <TableCell>Sample endpoint</TableCell>
+                    <TableCell className="font-medium text-xs sm:text-sm">/api/hello</TableCell>
+                    <TableCell className="space-x-1"><Badge variant="outline" className="text-xs">GET</Badge> <Badge variant="outline" className="text-xs">POST</Badge></TableCell>
+                    <TableCell className="text-xs sm:text-sm">Sample endpoint</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">/api/users</TableCell>
-                    <TableCell><Badge variant="outline">GET</Badge> <Badge variant="outline">POST</Badge></TableCell>
-                    <TableCell>User management (mocked)</TableCell>
+                    <TableCell className="font-medium text-xs sm:text-sm">/api/users</TableCell>
+                    <TableCell className="space-x-1"><Badge variant="outline" className="text-xs">GET</Badge> <Badge variant="outline" className="text-xs">POST</Badge></TableCell>
+                    <TableCell className="text-xs sm:text-sm">User management (mocked)</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-medium">/api/auth</TableCell>
-                    <TableCell><Badge variant="outline">POST</Badge> <Badge variant="outline">DELETE</Badge></TableCell>
-                    <TableCell>Auth via Supabase</TableCell>
+                    <TableCell className="font-medium text-xs sm:text-sm">/api/auth</TableCell>
+                    <TableCell className="space-x-1"><Badge variant="outline" className="text-xs">POST</Badge> <Badge variant="outline" className="text-xs">DELETE</Badge></TableCell>
+                    <TableCell className="text-xs sm:text-sm">Auth via Supabase</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -426,16 +461,16 @@ const apiUrl = env.NEXT_PUBLIC_API_URL;`}
           </Card>
         </section>
 
-        <section className="container mx-auto px-4 pb-20 pt-8">
+        <section className="container mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-20 pt-8">
           <Card className="mx-auto max-w-2xl">
             <CardHeader>
               <CardTitle>Ready to build?</CardTitle>
-              <CardDescription>Your foundation is set. Start shipping.</CardDescription>
+              <CardDescription className="text-xs sm:text-sm">Your foundation is set. Start shipping.</CardDescription>
             </CardHeader>
-            <CardContent className="flex items-center justify-center gap-3">
-              <Button size="lg" onClick={() => scrollToSection('getting-started')}>Get Started</Button>
-              <a href="https://github.com/mboss37/mb-web-boilerplate" target="_blank" rel="noreferrer">
-                <Button size="lg" variant="outline">GitHub</Button>
+            <CardContent className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Button size="lg" onClick={() => scrollToSection('getting-started')} className="w-full sm:w-auto">Get Started</Button>
+              <a href="https://github.com/mboss37/mb-web-boilerplate" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="w-full">GitHub</Button>
               </a>
             </CardContent>
           </Card>
