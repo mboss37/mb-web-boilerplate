@@ -11,11 +11,45 @@ A modern, production-ready Next.js 15 boilerplate with React 19, TypeScript, Tai
 - **🔐 Supabase Integration** - Authentication, database, and real-time features
 - **🗄️ Drizzle ORM** - Type-safe SQL operations with excellent performance
 - **🧩 shadcn/ui** - Beautiful, accessible UI components
+- **✨ Magic UI** - Animated components with Framer Motion
 - **⚡ TypeScript** - Full type safety throughout the application
 - **🔒 ESLint v9** - Modern code quality and consistency
 - **📱 Responsive Design** - Mobile-first approach with Tailwind CSS
 - **🌙 Dark Mode** - Built-in theme switching support with next-themes
 - **📊 API Routes** - Ready-to-use API endpoints with proper structure
+
+## ✨ Magic UI Components
+
+The boilerplate includes **Magic UI** - a collection of animated components built with Framer Motion:
+
+### 🎭 **Available Components:**
+
+- **Globe** - Interactive 3D WebGL globe with autorotation
+- **Meteors** - Animated meteor shower background effect
+- **SpinningText** - Circular text animation with customizable speed
+
+### 🚀 **Features:**
+
+- **Smooth Animations** - Powered by Framer Motion
+- **WebGL Support** - High-performance 3D graphics
+- **Customizable** - Easy to adjust timing, colors, and behavior
+- **Responsive** - Works perfectly on all device sizes
+- **TypeScript** - Full type safety and IntelliSense
+
+### 📱 **Usage Examples:**
+
+```tsx
+import { Globe, Meteors, SpinningText } from '@/components/magicui'
+
+// Interactive 3D Globe
+<Globe className="w-64 h-64" />
+
+// Animated Background
+<Meteors className="absolute inset-0" />
+
+// Circular Text Animation
+<SpinningText>Next.js • React • TypeScript</SpinningText>
+```
 
 ## 🌙 Dark Mode Support
 
@@ -342,6 +376,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Supabase](https://supabase.com/) - Backend as a service
 - [Drizzle ORM](https://orm.drizzle.team/) - Type-safe SQL ORM
 - [shadcn/ui](https://ui.shadcn.com/) - UI components
+- [Magic UI](https://magicui.design/) - Animated components with Framer Motion
 - [Tailwind CSS](https://tailwindcss.com/) - CSS framework
 - [next-themes](https://github.com/pacocoursey/next-themes) - Dark mode and theme management
 - [Zod](https://github.com/colinhacks/zod) - TypeScript-first schema validation

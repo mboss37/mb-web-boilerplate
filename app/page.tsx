@@ -13,6 +13,8 @@ import {
 import { Separator } from '@/components/ui/separator'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Globe } from '@/components/magicui/globe'
+import { Meteors } from '@/components/magicui/meteors'
 
 
 
@@ -105,26 +107,41 @@ export default function Home() {
 
       <main className="space-y-6 sm:space-y-8 lg:space-y-12">
         {/* Hero */}
-        <section className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12 xl:py-16 text-center">
-          <h1 className="mx-auto mb-4 max-w-4xl text-balance text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight">
-            Modern Next.js 15 Boilerplate
-          </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-pretty text-sm sm:text-base text-muted-foreground">
-            Production-ready starter with React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Supabase, and Drizzle ORM.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
-            <Button size="lg" onClick={() => scrollToSection('getting-started')} className="w-full sm:w-auto touch-manipulation">Get Started</Button>
-            <a href="https://github.com/mboss37/mb-web-boilerplate" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
-              <Button size="lg" variant="outline" className="w-full">GitHub</Button>
-            </a>
+        <section className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12 xl:py-16">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+            {/* Left Column - Interactive Globe */}
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
+              <div className="relative w-64 h-64 lg:w-80 lg:h-80">
+                <Globe className="!absolute !inset-0 !w-full !h-full" />
+              </div>
+            </div>
+            
+            {/* Right Column - Text Content */}
+            <div className="w-full lg:w-1/2 text-center lg:text-left">
+              <h1 className="mx-auto lg:mx-0 mb-4 max-w-2xl lg:max-w-none text-balance text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight">
+                Modern Next.js 15 Boilerplate
+              </h1>
+              <p className="mx-auto lg:mx-0 mb-8 max-w-2xl lg:max-w-none text-pretty text-sm sm:text-base text-muted-foreground">
+                Production-ready starter with React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Supabase, and Drizzle ORM.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 w-full sm:w-auto">
+                <Button size="lg" onClick={() => scrollToSection('getting-started')} className="w-full sm:w-auto touch-manipulation">Get Started</Button>
+                <a href="https://github.com/mboss37/mb-web-boilerplate" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
+                  <Button size="lg" variant="outline" className="w-full">GitHub</Button>
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 
         <Separator />
 
         {/* Features */}
-        <section id="features" className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-          <div className="mb-6 text-center">
+        <section id="features" className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 relative overflow-hidden">
+          {/* Animated Background */}
+          <Meteors className="absolute inset-0 pointer-events-none" />
+          
+          <div className="mb-6 text-center relative z-10">
             <h2 className="text-xl sm:text-2xl font-semibold">Features</h2>
             <p className="text-sm sm:text-base text-muted-foreground">Everything you need to build production apps</p>
           </div>
@@ -244,10 +261,10 @@ npm run dev`}
           <div className="grid gap-8 md:grid-cols-3 lg:grid-cols-4">
             {/* Brand */}
             <div className="space-y-3">
-              <div className="flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-primary" />
-                <span className="font-semibold">MB Web Boilerplate</span>
-              </div>
+                          <div className="flex items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-primary" />
+              <span className="font-semibold">MB Web Boilerplate</span>
+            </div>
               <p className="text-sm text-muted-foreground">
                 Modern, production-ready Next.js 15 starter with everything you need to build amazing web applications.
               </p>

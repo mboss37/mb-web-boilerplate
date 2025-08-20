@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   // Enable typed routes for better type safety
   typedRoutes: true,
   
+  // Allow cross-origin requests from development IPs
+  allowedDevOrigins: ['192.168.188.75'],
+  
   // Experimental features
   experimental: {
     // Optimize package imports
