@@ -12,8 +12,33 @@ A modern, production-ready Next.js 15 boilerplate with React 19, TypeScript, Tai
 - **⚡ TypeScript** - Full type safety throughout the application
 - **🔒 ESLint v9** - Modern code quality and consistency
 - **📱 Responsive Design** - Mobile-first approach with Tailwind CSS
-- **🌙 Dark Mode** - Built-in theme switching support
+- **🌙 Dark Mode** - Built-in theme switching support with next-themes
 - **📊 API Routes** - Ready-to-use API endpoints with proper structure
+
+## 🌙 Dark Mode Support
+
+The boilerplate includes comprehensive dark mode support powered by `next-themes`:
+
+- **Three Theme Options**: Light, Dark, and System (follows OS preference)
+- **Persistent Storage**: Theme choice is saved across browser sessions
+- **Smooth Transitions**: Beautiful animations between theme changes
+- **System Sync**: Automatically matches user's operating system theme
+- **No Flash on Load**: Prevents theme flashing during page load
+- **Accessible**: Screen reader friendly with proper ARIA labels
+
+### Dark Mode Components
+
+- **`ThemeProvider`**: Wraps the app with theme context
+- **`ModeToggle`**: Beautiful theme switcher with sun/moon icons
+- **Theme-aware styling**: All shadcn/ui components automatically adapt
+- **CSS Variables**: Comprehensive theming system with CSS custom properties
+
+### Usage
+
+The theme toggle button is positioned in the top-right corner of the homepage. Users can:
+1. Click the sun/moon icon to open the theme menu
+2. Choose between Light, Dark, or System themes
+3. See instant theme changes across the entire application
 
 ## 🏗️ Project Structure
 
@@ -28,6 +53,8 @@ mb-web-boilerplate/
 │   ├── 📄 layout.tsx                # Root layout component
 │   └── 📄 page.tsx                  # Home page
 ├── 📁 components/                    # Reusable UI components
+│   ├── 📄 mode-toggle.tsx           # Dark mode theme switcher
+│   ├── 📄 theme-provider.tsx        # Theme context provider
 │   └── 📁 ui/                       # shadcn/ui components
 │       ├── 📄 avatar.tsx
 │       ├── 📄 badge.tsx
@@ -39,6 +66,8 @@ mb-web-boilerplate/
 │       ├── 📄 input.tsx
 │       ├── 📄 label.tsx
 │       ├── 📄 navigation-menu.tsx
+│       ├── 📄 separator.tsx         # Visual separator component
+│       ├── 📄 tabs.tsx              # Tabbed interface component
 │       └── 📄 table.tsx
 ├── 📁 config/                        # Configuration files
 │   ├── 📄 app.ts                     # App configuration
@@ -310,6 +339,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Drizzle ORM](https://orm.drizzle.team/) - Type-safe SQL ORM
 - [shadcn/ui](https://ui.shadcn.com/) - UI components
 - [Tailwind CSS](https://tailwindcss.com/) - CSS framework
+- [next-themes](https://github.com/pacocoursey/next-themes) - Dark mode and theme management
 
 ## 📞 Support
 

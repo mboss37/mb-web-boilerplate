@@ -12,6 +12,7 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Separator } from "@/components/ui/separator"
+import { ModeToggle } from "@/components/mode-toggle"
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("overview");
@@ -27,7 +28,12 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 text-center">
+      <section className="container mx-auto px-4 py-16 text-center relative">
+        {/* Theme Toggle - Top Right */}
+        <div className="absolute top-4 right-4">
+          <ModeToggle />
+        </div>
+        
         <h1 className="text-4xl font-bold tracking-tight text-foreground mb-4">
           MB Web Boilerplate
         </h1>
@@ -41,10 +47,71 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Dark Mode Showcase */}
+      <section id="dark-mode" className="container mx-auto px-4 py-8">
+        <div className="text-center mb-6">
+          <h2 className="text-2xl font-semibold text-foreground mb-2">
+            🌙 Dark Mode Support
+          </h2>
+          <p className="text-muted-foreground">
+            Click the theme toggle button above to switch between light, dark, and system themes
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <Card className="border-2 border-primary/20">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                ☀️ Light Theme
+              </CardTitle>
+              <CardDescription>
+                Clean, bright interface for daytime use
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Perfect for well-lit environments and users who prefer bright interfaces.
+              </p>
+            </CardContent>
+          </Card>
+          
+          <Card className="border-2 border-primary/20">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                🌙 Dark Theme
+              </CardTitle>
+              <CardDescription>
+                Easy on the eyes for low-light conditions
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Ideal for evening use and reducing eye strain in dim environments.
+              </p>
+            </CardContent>
+          </Card>
+          
+          <Card className="border-2 border-primary/20">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                🖥️ System Theme
+              </CardTitle>
+              <CardDescription>
+                Automatically matches your OS preference
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Seamlessly follows your system's light/dark mode setting.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       {/* Navigation Menu */}
       <section className="container mx-auto px-4 pb-8">
         <NavigationMenu className="w-full">
-          <NavigationMenuList className="grid w-full grid-cols-5">
+          <NavigationMenuList className="grid w-full grid-cols-6">
             <NavigationMenuItem>
               <NavigationMenuTrigger 
                 onClick={() => scrollToSection('overview')}
@@ -223,6 +290,43 @@ export default function Home() {
                       <div className="text-sm font-medium leading-none">Advanced Features</div>
                       <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                         Production-ready capabilities
+                      </p>
+                    </a>
+                  </NavigationMenuLink>
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <NavigationMenuTrigger 
+                onClick={() => scrollToSection('dark-mode')}
+                className={activeSection === 'dark-mode' ? 'bg-accent' : ''}
+              >
+                🌙 Dark Mode
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="grid gap-3 p-4 w-[400px]">
+                  <NavigationMenuLink asChild>
+                    <a 
+                      href="#dark-mode" 
+                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                      onClick={() => scrollToSection('dark-mode')}
+                    >
+                      <div className="text-sm font-medium leading-none">Theme Switching</div>
+                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                        Light, dark, and system theme support
+                      </p>
+                    </a>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink asChild>
+                    <a 
+                      href="#theme-customization" 
+                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                      onClick={() => scrollToSection('theme-customization')}
+                    >
+                      <div className="text-sm font-medium leading-none">Customization</div>
+                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                        Customize colors and themes
                       </p>
                     </a>
                   </NavigationMenuLink>
