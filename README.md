@@ -1,250 +1,324 @@
-# MB Web Boilerplate
+# MB Web Boilerplate 🚀
 
-A modern Next.js 15 boilerplate with React 19, TypeScript, Tailwind CSS v4, ESLint v9, Supabase, and Drizzle ORM.
+A modern, production-ready Next.js 15 boilerplate with React 19, TypeScript, Tailwind CSS v4, Supabase, Drizzle ORM, and shadcn/ui components.
 
-## 🚀 Features
+## ✨ Features
 
-- **Next.js 15** - Latest version with App Router
-- **React 19** - Latest React features
-- **TypeScript** - Full type safety
-- **Tailwind CSS v4** - Latest Tailwind with new syntax
-- **ESLint v9** - Modern flat config format
-- **Supabase** - Backend-as-a-Service with PostgreSQL
-- **Drizzle ORM** - Type-safe database operations
-- **Authentication** - Built-in user management
-- **Row Level Security** - Database-level security policies
-- **shadcn/ui** - Beautiful, accessible UI components
+- **🚀 Next.js 15** - Latest App Router with React 19 and Server Components
+- **🎨 Tailwind CSS v4** - Modern CSS framework with latest features
+- **🔐 Supabase Integration** - Authentication, database, and real-time features
+- **🗄️ Drizzle ORM** - Type-safe SQL operations with excellent performance
+- **🧩 shadcn/ui** - Beautiful, accessible UI components
+- **⚡ TypeScript** - Full type safety throughout the application
+- **🔒 ESLint v9** - Modern code quality and consistency
+- **📱 Responsive Design** - Mobile-first approach with Tailwind CSS
+- **🌙 Dark Mode** - Built-in theme switching support
+- **📊 API Routes** - Ready-to-use API endpoints with proper structure
 
-## 🛠️ Tech Stack
+## 🏗️ Project Structure
 
-- **Frontend**: Next.js 15, React 19, TypeScript, Tailwind CSS v4
-- **Backend**: Supabase (PostgreSQL, Auth, Storage)
-- **Database**: PostgreSQL with Drizzle ORM
-- **Authentication**: Supabase Auth with SSR support
-- **Styling**: Tailwind CSS v4 with modern syntax
-- **Linting**: ESLint v9 with Next.js rules
-- **UI Components**: shadcn/ui with Radix UI primitives
+```
+mb-web-boilerplate/
+├── 📁 app/                          # Next.js 15 App Router
+│   ├── 📁 api/                      # API Routes (Route Handlers)
+│   │   ├── 📁 auth/                 # Authentication endpoints
+│   │   ├── 📁 hello/                # Sample API endpoint
+│   │   └── 📁 users/                # User management endpoints
+│   ├── 📄 globals.css               # Global styles & Tailwind CSS
+│   ├── 📄 layout.tsx                # Root layout component
+│   └── 📄 page.tsx                  # Home page
+├── 📁 components/                    # Reusable UI components
+│   └── 📁 ui/                       # shadcn/ui components
+│       ├── 📄 avatar.tsx
+│       ├── 📄 badge.tsx
+│       ├── 📄 button.tsx
+│       ├── 📄 card.tsx
+│       ├── 📄 dialog.tsx
+│       ├── 📄 dropdown-menu.tsx
+│       ├── 📄 form.tsx
+│       ├── 📄 input.tsx
+│       ├── 📄 label.tsx
+│       ├── 📄 navigation-menu.tsx
+│       └── 📄 table.tsx
+├── 📁 config/                        # Configuration files
+│   ├── 📄 app.ts                     # App configuration
+│   ├── 📄 database.ts                # Database configuration
+│   └── 📄 index.ts                   # Config exports
+├── 📁 constants/                      # Application constants
+│   ├── 📄 api.ts                     # API routes & endpoints
+│   ├── 📄 routes.ts                  # Route definitions
+│   └── 📄 index.ts                   # Constants exports
+├── 📁 hooks/                          # Custom React hooks
+│   ├── 📄 useAuth.ts                 # Authentication hook
+│   ├── 📄 useDatabase.ts             # Database operations hook
+│   └── 📄 index.ts                   # Hooks exports
+├── 📁 lib/                           # Utility libraries
+│   ├── 📁 db/                        # Database layer
+│   │   ├── 📄 index.ts               # Database connection
+│   │   └── 📄 schema.ts              # Drizzle ORM schema
+│   ├── 📁 supabase/                  # Supabase integration
+│   │   ├── 📄 client.ts              # Client-side Supabase
+│   │   ├── 📄 middleware.ts          # Supabase middleware
+│   │   └── 📄 server.ts              # Server-side Supabase
+│   └── 📄 utils.ts                   # Utility functions
+├── 📁 styles/                         # Additional styles
+│   └── 📄 components.css             # Custom component styles
+├── 📁 types/                          # TypeScript type definitions
+│   └── 📄 index.ts                   # Type exports
+├── 📄 .env.example                   # Environment variables template
+├── 📄 components.json                 # shadcn/ui configuration
+├── 📄 drizzle.config.ts              # Drizzle ORM configuration
+├── 📄 eslint.config.mjs              # ESLint v9 configuration
+├── 📄 middleware.ts                   # Next.js middleware
+├── 📄 next.config.ts                 # Next.js configuration
+├── 📄 package.json                   # Dependencies & scripts
+├── 📄 postcss.config.mjs             # PostCSS configuration
+└── 📄 README.md                      # Project documentation
+```
 
-## 📦 Installation
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm, yarn, or pnpm
+- Git
+
+### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/mboss37/mb-web-boilerplate.git
+   git clone https://github.com/yourusername/mb-web-boilerplate.git
    cd mb-web-boilerplate
    ```
 
 2. **Install dependencies**
    ```bash
    npm install
+   # or
+   yarn install
+   # or
+   pnpm install
    ```
 
 3. **Set up environment variables**
    ```bash
-   cp env.example .env.local
-   ```
-   
-   Fill in your Supabase credentials:
-   ```env
-   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-   DATABASE_URL=postgresql://postgres:[PASSWORD]@db.[PROJECT-REF].supabase.co:5432/postgres
+   cp .env.example .env.local
    ```
 
-## 🔧 Supabase Setup
+4. **Configure Supabase (Optional)**
+   - Create a Supabase project at [supabase.com](https://supabase.com)
+   - Add your credentials to `.env.local`:
+     ```env
+     NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+     NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+     DATABASE_URL=your_database_url
+     SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+     ```
 
-1. **Create a Supabase project**
-   - Go to [supabase.com](https://supabase.com)
-   - Create a new project
-   - Note your project URL and anon key
+5. **Start development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
 
-2. **Get your database connection string**
-   - Go to Settings > Database
-   - Copy the connection string
-   - Replace `[YOUR-PASSWORD]` with your database password
+6. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-3. **Set up Row Level Security (RLS)**
-   - The schema includes RLS policies for secure data access
-   - Users can only access their own data
-   - Public read access for published content
+## 🔧 Available Scripts
 
-## 🗄️ Database Operations
+```json
+{
+  "dev": "next dev",           # Start development server
+  "build": "next build",       # Build for production
+  "start": "next start",       # Start production server
+  "lint": "eslint .",          # Run ESLint
+  "db:generate": "drizzle-kit generate",    # Generate database migrations
+  "db:migrate": "drizzle-kit migrate",      # Run database migrations
+  "db:push": "drizzle-kit push",            # Push schema to database
+  "db:studio": "drizzle-kit studio"         # Open Drizzle Studio
+}
+```
 
-### Generate migrations
+## 🗄️ Database Setup
+
+### With Supabase (Recommended)
+
+1. **Create Supabase project** and get your credentials
+2. **Update environment variables** with your Supabase details
+3. **Generate and run migrations**:
+   ```bash
+   npm run db:generate
+   npm run db:migrate
+   ```
+
+### Without Supabase
+
+The boilerplate is designed to work without Supabase credentials. Simply run:
 ```bash
-npm run db:generate
+npm run dev
 ```
 
-### Push schema changes
-```bash
-npm run db:push
-```
+The app will run with mock data and disabled authentication features.
 
-### Run migrations
-```bash
-npm run db:migrate
-```
+## 🎨 Customization
 
-### Open Drizzle Studio
-```bash
-npm run db:studio
-```
+### Adding New Components
 
-## 🏗️ Project Structure
+1. **Install shadcn/ui components**:
+   ```bash
+   npx shadcn@latest add [component-name]
+   ```
 
-```
-├── app/                    # Next.js App Router
-├── lib/
-│   ├── db/               # Database configuration
-│   │   ├── schema.ts     # Drizzle ORM schema
-│   │   └── index.ts      # Database connection
-│   └── supabase/         # Supabase clients
-│       ├── client.ts     # Client-side client
-│       ├── server.ts     # Server-side client
-│       └── middleware.ts # Session management
-├── components/
-│   └── ui/               # shadcn/ui components
-├── drizzle/              # Generated migrations
-├── drizzle.config.ts     # Drizzle configuration
-├── components.json       # shadcn/ui configuration
-└── middleware.ts         # Next.js middleware
+2. **Create custom components** in `components/ui/`
+
+### Styling
+
+- **Global styles**: Edit `app/globals.css`
+- **Component styles**: Add to `styles/components.css`
+- **Tailwind config**: Modify `tailwind.config.js` if needed
+
+### Configuration
+
+- **App config**: Edit `config/app.ts`
+- **Database config**: Modify `config/database.ts`
+- **Constants**: Update files in `constants/` directory
+
+## 📱 API Routes
+
+The boilerplate includes several API endpoints:
+
+- **`/api/hello`** - Sample GET/POST endpoint
+- **`/api/users`** - User management (GET/POST)
+- **`/api/auth`** - Authentication (POST/DELETE)
+
+### Example API Usage
+
+```typescript
+// Fetch users
+const response = await fetch('/api/users');
+const users = await response.json();
+
+// Create user
+const newUser = await fetch('/api/users', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ email: 'user@example.com', fullName: 'John Doe' })
+});
 ```
 
 ## 🔐 Authentication
 
+### Supabase Auth
+
 The boilerplate includes:
+- **useAuth hook** for client-side authentication
+- **Server-side auth** with middleware
+- **Protected routes** support
+- **Session management**
 
-- **Server-side authentication** with Supabase SSR
-- **Client-side authentication** for interactive components
-- **Middleware** for session management
-- **Protected routes** (configurable)
-- **User profiles** with automatic creation
-
-### Using Authentication
+### Custom Auth Implementation
 
 ```typescript
-// Server Component
-import { createClient } from '@/lib/supabase/server'
+import { useAuth } from '@/hooks/useAuth';
 
-export default async function ProtectedPage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+function MyComponent() {
+  const { user, loading, signIn, signOut } = useAuth();
   
-  if (!user) {
-    redirect('/login')
-  }
+  if (loading) return <div>Loading...</div>;
   
-  return <div>Hello {user.email}</div>
+  return user ? (
+    <button onClick={signOut}>Sign Out</button>
+  ) : (
+    <button onClick={() => signIn('email', 'password')}>Sign In</button>
+  );
 }
 ```
 
-```typescript
-// Client Component
-'use client'
-import { createClient } from '@/lib/supabase/client'
+## 🎯 Best Practices
 
-export default function LoginForm() {
-  const supabase = createClient()
-  
-  const handleSignIn = async () => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email: 'user@example.com',
-      password: 'password'
-    })
-  }
-  
-  return <button onClick={handleSignIn}>Sign In</button>
-}
-```
+### Code Organization
 
-## 🎨 Styling & UI Components
+- **Components**: Keep components small and focused
+- **Hooks**: Extract reusable logic into custom hooks
+- **Types**: Define interfaces in `types/` directory
+- **Constants**: Store magic strings in `constants/` files
 
-### Tailwind CSS v4
-Built with Tailwind CSS v4 using the new syntax:
+### Performance
 
-```css
-@import "tailwindcss";
+- **Server Components**: Use Server Components when possible
+- **Image Optimization**: Use Next.js Image component
+- **Code Splitting**: Leverage dynamic imports for large components
+- **Caching**: Implement proper caching strategies
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
-```
+### Security
 
-### shadcn/ui Components
-The boilerplate includes a comprehensive set of pre-built UI components:
+- **Environment Variables**: Never commit sensitive data
+- **Input Validation**: Validate all user inputs
+- **Authentication**: Implement proper auth checks
+- **CORS**: Configure CORS for API routes if needed
 
-- **Form Elements**: Button, Input, Label, Form
-- **Layout**: Card, Badge, Avatar
-- **Navigation**: Navigation Menu, Dropdown Menu
-- **Data Display**: Table, Dialog
-- **Utilities**: All components are fully accessible and customizable
+## 🧪 Testing
 
-#### Adding More Components
-To add additional shadcn/ui components:
+### Running Tests
 
 ```bash
-npx shadcn@latest add [component-name]
+# Unit tests (when configured)
+npm test
+
+# E2E tests (when configured)
+npm run test:e2e
+
+# Type checking
+npm run type-check
 ```
 
-Example:
-```bash
-npx shadcn@latest add select
-npx shadcn@latest add tabs
-npx shadcn@latest add toast
-```
+## 📦 Deployment
 
-## 📝 Database Schema
+### Vercel (Recommended)
 
-The boilerplate includes example tables:
+1. **Push to GitHub**
+2. **Connect repository** to Vercel
+3. **Add environment variables** in Vercel dashboard
+4. **Deploy automatically**
 
-- **profiles** - User profiles linked to Supabase auth
-- **posts** - Blog/content posts with authors
-- **tags** - Content categorization
-- **post_tags** - Many-to-many relationship
+### Other Platforms
 
-All tables include:
-- UUID primary keys
-- Timestamps (created_at, updated_at)
-- Proper foreign key relationships
-- Row Level Security policies
-
-## 🚀 Development
-
-```bash
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm run start
-
-# Run linting
-npm run lint
-```
-
-## 🔒 Security Features
-
-- **Row Level Security (RLS)** on all tables
-- **Authentication required** for protected routes
-- **User isolation** - users can only access their own data
-- **Secure session management** with HTTP-only cookies
-
-## 📚 Additional Resources
-
-- [Supabase Documentation](https://supabase.com/docs)
-- [Drizzle ORM Documentation](https://orm.drizzle.team)
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS v4 Documentation](https://tailwindcss.com/docs)
+- **Netlify**: Configure build settings
+- **Railway**: Add environment variables
+- **Docker**: Use provided Dockerfile
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+1. **Fork the repository**
+2. **Create feature branch**: `git checkout -b feature/amazing-feature`
+3. **Commit changes**: `git commit -m 'Add amazing feature'`
+4. **Push to branch**: `git push origin feature/amazing-feature`
+5. **Open Pull Request**
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Next.js](https://nextjs.org/) - React framework
+- [Supabase](https://supabase.com/) - Backend as a service
+- [Drizzle ORM](https://orm.drizzle.team/) - Type-safe SQL ORM
+- [shadcn/ui](https://ui.shadcn.com/) - UI components
+- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
+
+## 📞 Support
+
+- **Issues**: [GitHub Issues](https://github.com/yourusername/mb-web-boilerplate/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/yourusername/mb-web-boilerplate/discussions)
+- **Email**: your-email@example.com
+
+---
+
+**Made with ❤️ by [Your Name]**
+
+*Star this repository if it helped you! ⭐*
