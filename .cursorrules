@@ -1,0 +1,102 @@
+# MB Web Boilerplate - Cursor Rules
+# This file ensures consistent development patterns across all AI agents
+
+## 🚀 Framework & Architecture
+- **ALWAYS** use Next.js 15 App Router patterns
+- **ALWAYS** use React 19 with Server Components when possible
+- **ALWAYS** use TypeScript with strict mode
+- **ALWAYS** follow the established project structure in README.md
+- **NEVER** use Pages Router or older Next.js patterns
+
+## 🎨 UI Components & Styling
+- **ALWAYS** use shadcn/ui components as the primary UI library
+- **ALWAYS** use Tailwind CSS v4 for styling
+- **ALWAYS** use Magic UI components for animations (Globe, Meteors, SpinningText)
+- **ALWAYS** use Lucide React for icons
+- **ALWAYS** implement dark mode support with next-themes
+- **NEVER** use Material-UI, Ant Design, or other UI frameworks
+
+## 📱 Responsive Design
+- **ALWAYS** use mobile-first approach with Tailwind responsive classes
+- **ALWAYS** use `sm:`, `md:`, `lg:`, `xl:` breakpoints
+- **ALWAYS** ensure touch-friendly interactions on mobile
+- **ALWAYS** test responsive behavior across all screen sizes
+
+## 🗄️ Database & Backend
+- **ALWAYS** use Supabase for authentication and database
+- **ALWAYS** use Drizzle ORM for database operations
+- **ALWAYS** implement proper TypeScript types for database schemas
+- **ALWAYS** use environment variables for sensitive configuration
+
+## 🔧 Code Organization
+- **ALWAYS** place components in appropriate directories:
+  - `components/ui/` for shadcn/ui components
+  - `components/magicui/` for Magic UI components
+  - `components/` for custom components
+- **ALWAYS** use custom hooks in `hooks/` directory
+- **ALWAYS** place utilities in `lib/` directory
+- **ALWAYS** use constants in `constants/` directory
+
+## 📝 Code Style
+- **ALWAYS** use functional components with hooks
+- **ALWAYS** use proper TypeScript interfaces and types
+- **ALWAYS** implement proper error handling and loading states
+- **ALWAYS** use semantic HTML and accessibility features
+- **ALWAYS** follow ESLint v9 rules
+
+## 🎭 Magic UI Integration
+- **ALWAYS** use Magic UI components for animations:
+  - `<Globe />` for 3D interactive elements
+  - `<Meteors />` for background effects
+  - `<SpinningText />` for circular text animations
+- **ALWAYS** import from `@/components/magicui/[component-name]`
+- **ALWAYS** ensure proper positioning and container constraints
+
+## 🌙 Theme & Styling
+- **ALWAYS** use CSS variables for theming
+- **ALWAYS** implement dark mode variants
+- **ALWAYS** use consistent color schemes from Tailwind
+- **ALWAYS** ensure smooth theme transitions
+
+## 📱 Mobile Optimization
+- **ALWAYS** use `touch-manipulation` for interactive elements
+- **ALWAYS** implement proper viewport meta tags
+- **ALWAYS** ensure text is readable on small screens
+- **ALWAYS** use appropriate touch target sizes
+
+## 🔐 Security & Best Practices
+- **ALWAYS** validate environment variables with Zod
+- **ALWAYS** implement proper authentication checks
+- **ALWAYS** use secure headers and CORS policies
+- **ALWAYS** never expose sensitive data in client code
+
+## 📚 Documentation
+- **ALWAYS** update README.md when adding new features
+- **ALWAYS** include usage examples for new components
+- **ALWAYS** document any breaking changes
+- **ALWAYS** maintain the project structure documentation
+
+## 🚫 What NOT to Do
+- **NEVER** use class components
+- **NEVER** use older React patterns (useEffect for everything)
+- **NEVER** hardcode values that should be configurable
+- **NEVER** skip TypeScript types
+- **NEVER** use inline styles instead of Tailwind
+- **NEVER** ignore mobile responsiveness
+- **NEVER** use deprecated Next.js features
+
+## ✅ Quality Standards
+- **ALWAYS** ensure code builds without errors
+- **ALWAYS** test responsive behavior
+- **ALWAYS** verify dark mode compatibility
+- **ALWAYS** check accessibility features
+- **ALWAYS** maintain consistent naming conventions
+
+## 🔄 Update Process
+When adding new features:
+1. Follow the established patterns
+2. Update relevant documentation
+3. Ensure mobile responsiveness
+4. Test dark mode compatibility
+5. Add proper TypeScript types
+6. Use appropriate Magic UI components for animations

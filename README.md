@@ -7,6 +7,7 @@ A modern, production-ready Next.js 15 boilerplate with React 19, TypeScript, Tai
 ## ✨ Features
 
 - **🚀 Next.js 15** - Latest App Router with React 19 and Server Components
+- **⚛️ React 19** - Latest React with concurrent features and improvements
 - **🎨 Tailwind CSS v4** - Modern CSS framework with latest features
 - **🔐 Supabase Integration** - Authentication, database, and real-time features
 - **🗄️ Drizzle ORM** - Type-safe SQL operations with excellent performance
@@ -17,6 +18,9 @@ A modern, production-ready Next.js 15 boilerplate with React 19, TypeScript, Tai
 - **📱 Responsive Design** - Mobile-first approach with Tailwind CSS
 - **🌙 Dark Mode** - Built-in theme switching support with next-themes
 - **📊 API Routes** - Ready-to-use API endpoints with proper structure
+- **🔧 Zod Validation** - TypeScript-first schema validation for environment variables
+- **🎭 Framer Motion** - Smooth animations and transitions
+- **📱 Mobile Optimized** - Touch-friendly interactions and responsive layouts
 
 ## ✨ Magic UI Components
 
@@ -82,56 +86,23 @@ The theme toggle button is positioned in the top-right corner of the homepage. U
 mb-web-boilerplate/
 ├── 📁 app/                          # Next.js 15 App Router
 │   ├── 📁 api/                      # API Routes (Route Handlers)
-│   │   ├── 📁 auth/                 # Authentication endpoints
-│   │   ├── 📁 hello/                # Sample API endpoint
-│   │   └── 📁 users/                # User management endpoints
 │   ├── 📄 globals.css               # Global styles & Tailwind CSS
 │   ├── 📄 layout.tsx                # Root layout component
 │   └── 📄 page.tsx                  # Home page
 ├── 📁 components/                    # Reusable UI components
 │   ├── 📄 mode-toggle.tsx           # Dark mode theme switcher
 │   ├── 📄 theme-provider.tsx        # Theme context provider
+│   ├── 📁 magicui/                  # Magic UI animated components
 │   └── 📁 ui/                       # shadcn/ui components
-│       ├── 📄 avatar.tsx
-│       ├── 📄 badge.tsx
-│       ├── 📄 button.tsx
-│       ├── 📄 card.tsx
-│       ├── 📄 dialog.tsx
-│       ├── 📄 dropdown-menu.tsx
-│       ├── 📄 form.tsx
-│       ├── 📄 input.tsx
-│       ├── 📄 label.tsx
-│       ├── 📄 navigation-menu.tsx
-│       ├── 📄 separator.tsx         # Visual separator component
-│       ├── 📄 tabs.tsx              # Tabbed interface component
-│       └── 📄 table.tsx
 ├── 📁 config/                        # Configuration files
-│   ├── 📄 app.ts                     # App configuration
-│   ├── 📄 database.ts                # Database configuration
-│   └── 📄 index.ts                   # Config exports
 ├── 📁 constants/                      # Application constants
-│   ├── 📄 api.ts                     # API routes & endpoints
-│   ├── 📄 routes.ts                  # Route definitions
-│   └── 📄 index.ts                   # Constants exports
 ├── 📁 docs/                           # Documentation
-│   └── 📄 svg-usage.md               # Guide for working with SVGs
 ├── 📁 hooks/                          # Custom React hooks
-│   ├── 📄 useAuth.ts                 # Authentication hook
-│   ├── 📄 useDatabase.ts             # Database operations hook
-│   └── 📄 index.ts                   # Hooks exports
 ├── 📁 lib/                           # Utility libraries
 │   ├── 📁 db/                        # Database layer
-│   │   ├── 📄 index.ts               # Database connection
-│   │   └── 📄 schema.ts              # Drizzle ORM schema
-│   ├── 📁 supabase/                  # Supabase integration
-│   │   ├── 📄 client.ts              # Client-side Supabase
-│   │   ├── 📄 middleware.ts          # Supabase middleware
-│   │   └── 📄 server.ts              # Server-side Supabase
-│   └── 📄 utils.ts                   # Utility functions
+│   └── 📁 supabase/                  # Supabase integration
 ├── 📁 styles/                         # Additional styles
-│   └── 📄 components.css             # Custom component styles
 ├── 📁 types/                          # TypeScript type definitions
-│   └── 📄 index.ts                   # Type exports
 ├── 📄 .env.example                   # Environment variables template
 ├── 📄 components.json                 # shadcn/ui configuration
 ├── 📄 drizzle.config.ts              # Drizzle ORM configuration
@@ -240,7 +211,19 @@ The app will run with mock data and disabled authentication features.
    npx shadcn@latest add [component-name]
    ```
 
-2. **Create custom components** in `components/ui/`
+2. **Install Magic UI components**:
+   ```bash
+   npx shadcn@latest add "https://magicui.design/r/[component-name]"
+   ```
+
+3. **Create custom components** in `components/ui/`
+
+### Enhanced UI Features
+
+- **Interactive Icons**: Feature cards now include relevant Lucide React icons
+- **Animated Backgrounds**: Magic UI components for engaging visual effects
+- **Responsive Layout**: Mobile-first design with touch-friendly interactions
+- **Dynamic Content**: Auto-updating year and interactive elements
 
 ### Styling
 
@@ -373,13 +356,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - [Next.js](https://nextjs.org/) - React framework
+- [React](https://react.dev/) - UI library
 - [Supabase](https://supabase.com/) - Backend as a service
 - [Drizzle ORM](https://orm.drizzle.team/) - Type-safe SQL ORM
 - [shadcn/ui](https://ui.shadcn.com/) - UI components
 - [Magic UI](https://magicui.design/) - Animated components with Framer Motion
+- [Framer Motion](https://www.framer.com/motion/) - Animation library
 - [Tailwind CSS](https://tailwindcss.com/) - CSS framework
 - [next-themes](https://github.com/pacocoursey/next-themes) - Dark mode and theme management
 - [Zod](https://github.com/colinhacks/zod) - TypeScript-first schema validation
+- [Lucide React](https://lucide.dev/) - Beautiful icons
 
 ## 🚀 Deployment Checklist
 
