@@ -373,12 +373,12 @@ Before deploying to production:
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/mb-web-boilerplate/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/mb-web-boilerplate/discussions)
-- **Email**: your-email@example.com
+- **Issues**: [GitHub Issues](https://github.com/mboss37/mb-web-boilerplate/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/mboss37/mb-web-boilerplate/discussions)
+- **Email**: mihael@bosnjak.io
 
 ---
 
-**Made with ❤️ by [Your Name]**
+**Made with ❤️ by Mihael Bosnjak**
 
 *Star this repository if it helped you! ⭐*
