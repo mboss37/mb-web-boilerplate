@@ -1,0 +1,17 @@
+# Robots.txt for MB Web Boilerplate
+# https://mb-web-boilerplate.vercel.app
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Crawl delay (optional, adjust as needed)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://mb-web-boilerplate.vercel.app/sitemap.xml
+
+# Disallow certain paths (examples)
+# Disallow: /api/
+# Disallow: /private/
+# Disallow: /_next/

@@ -77,6 +77,8 @@ mb-web-boilerplate/
 │   ├── 📄 api.ts                     # API routes & endpoints
 │   ├── 📄 routes.ts                  # Route definitions
 │   └── 📄 index.ts                   # Constants exports
+├── 📁 docs/                           # Documentation
+│   └── 📄 svg-usage.md               # Guide for working with SVGs
 ├── 📁 hooks/                          # Custom React hooks
 │   ├── 📄 useAuth.ts                 # Authentication hook
 │   ├── 📄 useDatabase.ts             # Database operations hook
@@ -340,6 +342,32 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [shadcn/ui](https://ui.shadcn.com/) - UI components
 - [Tailwind CSS](https://tailwindcss.com/) - CSS framework
 - [next-themes](https://github.com/pacocoursey/next-themes) - Dark mode and theme management
+- [Zod](https://github.com/colinhacks/zod) - TypeScript-first schema validation
+
+## 🚀 Deployment Checklist
+
+Before deploying to production:
+
+1. **Environment Variables**
+   - Set all required environment variables in your hosting platform
+   - Ensure `NODE_ENV=production` is set
+   - Add your domain to `NEXT_PUBLIC_BASE_URL`
+
+2. **Database**
+   - Run migrations: `npm run db:migrate`
+   - Verify database connection
+
+3. **Images**
+   - Replace the placeholder `og-image.svg` with your own image (1200x630)
+   - Update allowed image domains in `next.config.ts`
+
+4. **SEO**
+   - Update metadata in `app/layout.tsx` with your information
+   - Add a `robots.txt` and `sitemap.xml` to the public folder
+
+5. **Performance**
+   - Run `npm run build` locally to check for any build errors
+   - Test with Lighthouse for performance scores
 
 ## 📞 Support
 

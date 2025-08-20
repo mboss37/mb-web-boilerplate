@@ -1,0 +1,24 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  <rect x="100" y="100" width="1000" height="430" rx="20" fill="#171717" stroke="#262626" stroke-width="2"/>
+  
+  <circle cx="200" cy="315" r="50" fill="#3b82f6" opacity="0.2"/>
+  <circle cx="200" cy="315" r="30" fill="#3b82f6"/>
+  
+  <text x="280" y="290" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="700" fill="#fafafa">
+    MB Web Boilerplate
+  </text>
+  
+  <text x="280" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#a1a1aa">
+    Modern Next.js 15 Starter with React 19
+  </text>
+  
+  <text x="280" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#71717a">
+    TypeScript • Tailwind CSS • Supabase • Drizzle ORM • shadcn/ui
+  </text>
+  
+  <rect x="900" y="250" width="180" height="50" rx="25" fill="#3b82f6"/>
+  <text x="990" y="282" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle">
+    Get Started
+  </text>
+</svg>

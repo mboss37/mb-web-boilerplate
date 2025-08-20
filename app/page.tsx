@@ -20,6 +20,7 @@ const NAV_SECTIONS = [
   { id: 'getting-started', label: 'Getting Started' },
   { id: 'structure', label: 'Structure' },
   { id: 'features', label: 'Features' },
+  { id: 'enhancements', label: 'New Features' },
   { id: 'components', label: 'Components' },
   { id: 'api', label: 'API' },
 ] as const
@@ -139,6 +140,10 @@ export default function Home() {
               { title: 'Supabase', badge: 'Auth + DB' },
               { title: 'Drizzle ORM', badge: 'Type-safe SQL' },
               { title: 'ESLint v9', badge: 'Flat config' },
+              { title: 'Zod', badge: 'Env Validation' },
+              { title: 'SEO Ready', badge: 'Optimized' },
+              { title: 'Error Handling', badge: 'Production' },
+              { title: 'Security', badge: 'Headers' },
             ].map((item) => (
               <Card key={item.title} className="hover:shadow-sm">
                 <CardHeader>
@@ -269,6 +274,84 @@ npm run dev`}
 
         <Separator />
 
+        {/* New Features */}
+        <section id="enhancements" className="container mx-auto px-4">
+          <div className="mb-8 text-center">
+            <h2 className="text-2xl font-semibold">Enhanced Features</h2>
+            <p className="text-muted-foreground">Production-ready improvements</p>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-2">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Badge variant="secondary">New</Badge>
+                  Environment Validation
+                </CardTitle>
+                <CardDescription>Type-safe environment variables with Zod</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <pre className="rounded-md bg-muted p-4 text-sm">
+{`import { env } from '@/lib/env';
+
+// Type-safe & validated
+const apiUrl = env.NEXT_PUBLIC_API_URL;`}
+                </pre>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Badge variant="secondary">New</Badge>
+                  SEO Optimization
+                </CardTitle>
+                <CardDescription>Complete metadata & social cards</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-2 text-sm text-muted-foreground">
+                <p>✓ Dynamic page titles with templates</p>
+                <p>✓ Open Graph & Twitter cards</p>
+                <p>✓ Structured data support</p>
+                <p>✓ Robot & sitemap configuration</p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Badge variant="secondary">New</Badge>
+                  Error Handling
+                </CardTitle>
+                <CardDescription>Graceful error boundaries & 404 pages</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-2 text-sm text-muted-foreground">
+                <p>✓ Global error boundary with recovery</p>
+                <p>✓ Custom 404 page with navigation</p>
+                <p>✓ Development error details</p>
+                <p>✓ Production-safe error messages</p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Badge variant="secondary">New</Badge>
+                  Security & Performance
+                </CardTitle>
+                <CardDescription>Production-ready optimizations</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-2 text-sm text-muted-foreground">
+                <p>✓ Security headers (HSTS, CSP, etc.)</p>
+                <p>✓ Image optimization (AVIF, WebP)</p>
+                <p>✓ Package import optimization</p>
+                <p>✓ SWC minification</p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        <Separator />
+
         {/* Components */}
         <section id="components" className="container mx-auto px-4">
           <div className="mb-8 text-center">
@@ -304,7 +387,7 @@ npm run dev`}
         <section id="api" className="container mx-auto px-4">
           <div className="mb-8 text-center">
             <h2 className="text-2xl font-semibold">API Routes</h2>
-            <p className="text-muted-foreground">Next.js 15 Route Handlers</p>
+            <p className="text-muted-foreground">Next.js 15 Route Handlers with proper error handling</p>
           </div>
 
           <Card>
