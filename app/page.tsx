@@ -15,6 +15,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Globe } from '@/components/magicui/globe'
 import { Meteors } from '@/components/magicui/meteors'
+import { Shield, Database, Palette, CheckCircle, Rocket, Code } from 'lucide-react'
 
 
 
@@ -105,7 +106,9 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="space-y-6 sm:space-y-8 lg:space-y-12">
+      <main className="">
+        {/* Animated Background */}
+        <Meteors className="absolute inset-0 pointer-events-none" />
         {/* Hero */}
         <section className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12 xl:py-16">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
@@ -138,8 +141,7 @@ export default function Home() {
 
         {/* Features */}
         <section id="features" className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 relative overflow-hidden">
-          {/* Animated Background */}
-          <Meteors className="absolute inset-0 pointer-events-none" />
+
           
           <div className="mb-6 text-center relative z-10">
             <h2 className="text-xl sm:text-2xl font-semibold">Features</h2>
@@ -178,31 +180,40 @@ export default function Home() {
               {
                 title: 'Authentication',
                 desc: 'Supabase Auth with SSR middleware and session handling.',
+                icon: Shield,
               },
               {
                 title: 'Database',
                 desc: 'PostgreSQL via Supabase + Drizzle ORM with migrations.',
+                icon: Database,
               },
               {
                 title: 'UI Components',
                 desc: 'shadcn/ui with Tailwind CSS v4 and dark mode support.',
+                icon: Palette,
               },
               {
                 title: 'Type Safety',
                 desc: 'Strict TypeScript across the app and database layer.',
+                icon: CheckCircle,
               },
               {
                 title: 'Production Ready',
                 desc: 'SEO optimization, error handling, and security headers.',
+                icon: Rocket,
               },
               {
                 title: 'Developer Experience',
                 desc: 'ESLint v9, modern scripts, and clean project layout.',
+                icon: Code,
               },
             ].map((f) => (
               <Card key={f.title} className="hover:shadow-sm">
                 <CardHeader>
-                  <CardTitle className="text-sm sm:text-base">{f.title}</CardTitle>
+                  <div className="flex items-center gap-3">
+                    <f.icon className="h-5 w-5 text-primary" />
+                    <CardTitle className="text-sm sm:text-base">{f.title}</CardTitle>
+                  </div>
                 </CardHeader>
                 <CardContent className="text-xs sm:text-sm text-muted-foreground">{f.desc}</CardContent>
               </Card>
@@ -315,11 +326,66 @@ npm run dev`}
             <div className="space-y-3">
               <h3 className="font-medium">Built With</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Next.js 15</li>
-                <li>React 19</li>
-                <li>TypeScript</li>
-                <li>Tailwind CSS v4</li>
-                <li>shadcn/ui</li>
+                <li>
+                  <a 
+                    href="https://nextjs.org/" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Next.js 15
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://react.dev/blog/2024/12/05/react-19" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    React 19
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://www.typescriptlang.org/" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    TypeScript
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://tailwindcss.com/blog/tailwindcss-v4" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Tailwind CSS v4
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://ui.shadcn.com/" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    shadcn/ui
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://magicui.design/" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Magic UI
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -345,11 +411,9 @@ npm run dev`}
           <div className="mt-8 pt-8 border-t">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <p className="text-sm text-muted-foreground">
-                © 2024 MB Web Boilerplate. Made with ❤️ for the Next.js community.
+                © {new Date().getFullYear()} MB Web Boilerplate. Made with ❤️ for the Next.js community.
               </p>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-                <a href="#" className="hover:text-foreground transition-colors">Terms</a>
                 <a href="https://github.com/mboss37/mb-web-boilerplate/blob/main/LICENSE" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">License</a>
               </div>
             </div>
