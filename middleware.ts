@@ -1,8 +1,14 @@
-import { type NextRequest } from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import { updateSession } from '@/lib/supabase/middleware'
 
 export async function middleware(request: NextRequest) {
-  return await updateSession(request)
+  // Only run Supabase middleware if credentials are provided
+  if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    return await updateSession(request)
+  }
+  
+  // Return normal response if no Supabase config
+  return NextResponse.next()
 }
 
 export const config = {
